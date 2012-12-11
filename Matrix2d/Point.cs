@@ -26,12 +26,14 @@ namespace Matrix2d
         {
             return Math.Atan2(Y, X);
         }
-        
+
+        // Returns a vector in the perpendicular left direction.
         public Point Left()
         {
             return new Point(-this.Y, this.X);
         }
-        
+
+        // Returns a vector in the perpendicular right direction.
         public Point Right()
         {
             return new Point(this.Y, -this.X);
@@ -41,6 +43,13 @@ namespace Matrix2d
         public static Point Difference(Point a, Point b)
         {
             return new Point(a.X - b.X, a.Y - b.Y);
+        }
+
+        // Returns a vector with same direction and length 1.
+        public Point Normalized()
+        {
+            var length = this.Length();
+            return new Point(this.X / length, this.Y / length);
         }
     }
 }

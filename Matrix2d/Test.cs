@@ -23,6 +23,15 @@ namespace Matrix2d
             Assert.True(p3.X == 3);
             Assert.True(p3.Y == 3);
         }
+
+        [Test()]
+        public void TestNormalized1()
+        {
+            var p = new Point(4, 4);
+            var q = p.Normalized();
+            double eps = 0.00000001;
+            Assert.True(Math.Abs(q.Length() - 1) < eps);
+        }
         
         [Test()]
         public void TestMatrix1()
@@ -67,11 +76,11 @@ namespace Matrix2d
             var mat = Matrix.Rotation(45);
             var res = Matrix.Multiply(mat, mat);
             double eps = 0.0000001;
-            Assert.True(res.Elements[0] - 0 < eps);
-            Assert.True(res.Elements[1] - 1 < eps);
+            Assert.True(Math.Abs(res.Elements[0] - 0) < eps);
+            Assert.True(Math.Abs(res.Elements[1] - -1) < eps);
             Assert.True(res.Elements[2] == 0);
-            Assert.True(res.Elements[3] - 1 < eps);
-            Assert.True(res.Elements[4] - 0 < eps);
+            Assert.True(Math.Abs(res.Elements[3] - 1) < eps);
+            Assert.True(Math.Abs(res.Elements[4] - 0) < eps);
             Assert.True(res.Elements[5] == 0);
         }
         
