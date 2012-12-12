@@ -118,6 +118,62 @@ namespace Matrix2d
         {
             return Point.Dot(a, b);
         }
+
+        public Point Transform(Matrix mat)
+        {
+            return new Point(mat.Elements[0] * X + mat.Elements[1] * Y + mat.Elements[2],
+                             mat.Elements[1] * X + mat.Elements[1] * Y + mat.Elements[3]);
+        }
+
+        public Point TransformVector(Matrix mat)
+        {
+            return new Point(mat.Elements[0] * X + mat.Elements[1] * Y,
+                             mat.Elements[1] * X + mat.Elements[1] * Y);
+        }
+
+        /// <summary>
+        /// Transforms vectors, given a destination array and a source array.
+        /// This transformation uses the translation part of the matrix.
+        /// </summary>
+        /// <param name='dest'>
+        /// The destination array to transform vectors.
+        /// </param>
+        /// <param name='src'>
+        /// The source array to transform vectors to.
+        /// </param>
+        /// <param name='mat'>
+        /// The matrix transformation to apply.
+        /// </param>
+        public static void TransformPoints(Point[] dest, Point[] src, Matrix mat)
+        {
+            int n = src.Length;
+            for (int i = 0; i < n; i++)
+            {
+                dest[i] = src[i].Transform(mat);
+            }
+        }
+
+        /// <summary>
+        /// Transforms vectors, given a destination array and a source array.
+        /// This transformation does not use the translation part of the matrix.
+        /// </summary>
+        /// <param name='dest'>
+        /// The destination array to transform vectors.
+        /// </param>
+        /// <param name='src'>
+        /// The source array to transform vectors to.
+        /// </param>
+        /// <param name='mat'>
+        /// The matrix transformation to apply.
+        /// </param>
+        public static void TransformVectors(Point[] dest, Point[] src, Matrix mat)
+        {
+            int n = src.Length;
+            for (int i = 0; i < n; i++)
+            {
+                dest[i] = src[i].TransformVector(mat);
+            }
+        }
     }
 }
 
