@@ -133,6 +133,15 @@ namespace Matrix2d
             Assert.True(c.X == 3);
             Assert.True(c.Y == 3);
         }
+
+        [Test()]
+        public void TestArea()
+        {
+            var points = new Point[]{new Point(0, 0), new Point(100, 0), new Point(100, 100), new Point(0, 100)};
+            var area = Point.AreaRightSideOut(points);
+            Assert.True(area == -10000);
+            Assert.True(Point.AreaLeftSideOut(points) == 10000);
+        }
     }
 }
 

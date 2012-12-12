@@ -174,6 +174,88 @@ namespace Matrix2d
                 dest[i] = src[i].TransformVector(mat);
             }
         }
+
+        /// <summary>
+        /// Translates an array of points from a source to a destination.
+        /// </summary>
+        /// <param name='dest'>
+        /// The destination array.
+        /// </param>
+        /// <param name='src'>
+        /// The source array.
+        /// </param>
+        public void Translate(Point[] dest, Point[] src)
+        {
+            int n = src.Length;
+            for (int i = 0; i < n; i++)
+            {
+                dest[i] = src[i] + this;
+            }
+        }
+
+        /// <summary>
+        /// Finds the index of the closest point in an array.
+        /// </summary>
+        /// <param name='src'>
+        /// An array of points to search for the closest.
+        /// </param>
+        public int Closest(Point[] src)
+        {
+            int n = src.Length;
+            double min = double.MaxValue;
+            int minIndex = -1;
+            for (int i = 0; i < n; i++)
+            {
+                double dx = src[i].X - this.X;
+                double dy = src[i].Y - this.Y;
+                double dist2 = dx * dx + dy * dy;
+                if (dist2 < min) 
+                {
+                    min = dist2;
+                    minIndex = i;
+                }
+            }
+            return minIndex;
+        }
+
+        /// <summary>
+        /// Calculates the area of an irregular polygon where right side is out.
+        /// If the polygon is inverted a negative array will be returned.
+        /// </summary>
+        /// <returns>
+        /// Returns area of irregular polygon with right side out.
+        /// </returns>
+        /// <param name='src'>
+        /// An array containing the coordinates of the irregular polygon.
+        /// </param>
+        public static double AreaRightSideOut(Point[] src)
+        {
+            int n = src.Length;
+            double sum = 0;
+            for (int i = 0; i < n; i++)
+            {
+                int j = (i+1)%n;
+                Point a = src[i];
+                Point b = src[j];
+                sum += (b.Y + a.Y) * (b.X - a.X) / 2;
+            }
+            return sum;
+        }
+
+        /// <summary>
+        /// Calculates the area of an irregular polygon where left side is out.
+        /// If the polygon is inverted a negative array will be returned.
+        /// </summary>
+        /// <returns>
+        /// Returns area of irregular polygon with left side out.
+        /// </returns>
+        /// <param name='src'>
+        /// An array containing the coordinates of the irregular polygon.
+        /// </param>
+        public static double AreaLeftSideOut(Point[] src)
+        {
+            return -AreaRightSideOut(src);
+        }
     }
 }
 
