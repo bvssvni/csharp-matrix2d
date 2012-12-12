@@ -256,6 +256,62 @@ namespace Matrix2d
         {
             return -AreaRightSideOut(src);
         }
+
+        /// <summary>
+        /// Finds the sum of all vectors in an array.
+        /// </summary>
+        /// <param name='src'>
+        /// An array containing the vectors to sum.
+        /// </param>
+        public static Point Sum(Point[] src)
+        {
+            Point sum = new Point(0, 0);
+            int n = src.Length;
+            for (int i = 0; i < n; i++)
+            {
+                sum.X += src[i].X;
+                sum.Y += src[i].Y;
+            }
+            return sum;
+        }
+
+        /// <summary>
+        /// Finds the average coordinate in a polygon.
+        /// </summary>
+        /// <param name='src'>
+        /// An array containing the coordinates of the polygon.
+        /// </param>
+        public static Point Average(Point[] src)
+        {
+            Point sum = Sum(src);
+            return new Point(sum.X / src.Length, sum.Y / src.Length);
+        }
+
+        /// <summary>
+        /// Finds the weighted average of a polygon.
+        /// </summary>
+        /// <returns>
+        /// Returns weighted average.
+        /// </returns>
+        /// <param name='src'>
+        /// An array containing coordinates.
+        /// </param>
+        /// <param name='weights'>
+        /// An array of weights, one for each coordinate.
+        /// </param>
+        public static Point WeightedAverage(Point[] src, double[] weights)
+        {
+            Point sum = new Point(0, 0);
+            double sumWeights = 0;
+            int n = src.Length;
+            for (int i = 0; i < n; i++)
+            {
+                sum.X += src[i].X * weights[i];
+                sum.Y += src[i].Y * weights[i];
+                sumWeights += weights[i];
+            }
+            return new Point(sum.X / sumWeights, sum.Y / sumWeights);
+        }
     }
 }
 

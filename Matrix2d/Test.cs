@@ -142,6 +142,15 @@ namespace Matrix2d
             Assert.True(area == -10000);
             Assert.True(Point.AreaLeftSideOut(points) == 10000);
         }
+
+        [Test()]
+        public void TestAverage()
+        {
+            var points = new Point[]{new Point(0, 0), new Point(100, 0), new Point(100, 100), new Point(0, 100)};
+            var avg = Point.Average(points);
+            Assert.True(avg.X == 50);
+            Assert.True(avg.Y == 50);
+        }
     }
 }
 
