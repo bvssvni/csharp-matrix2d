@@ -104,6 +104,18 @@ namespace Matrix2d
             return Point.Dot(a, b.Left());
         }
 
+        public static double AngleBetween(Point a, Point b)
+        {
+            double dot = a * b;
+            return Math.Acos(dot / a.Length() / b.Length()) * 180.0 / Math.PI;
+        }
+
+        public static double AngleBetweenInRadians(Point a, Point b)
+        {
+            double dot = a * b;
+            return Math.Acos(dot / a.Length() / b.Length());
+        }
+
         public static Point operator + (Point a, Point b)
         {
             return Point.Add(a, b);

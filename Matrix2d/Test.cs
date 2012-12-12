@@ -151,6 +151,15 @@ namespace Matrix2d
             Assert.True(avg.X == 50);
             Assert.True(avg.Y == 50);
         }
+
+        [Test()]
+        public void TestAngleBetween()
+        {
+            var a = new Point(100, 0);
+            var b = new Point(0, 100);
+            var angle = Point.AngleBetween(b, a);
+            Assert.True(angle == 90);
+        }
     }
 }
 
