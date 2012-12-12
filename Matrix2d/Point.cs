@@ -122,13 +122,13 @@ namespace Matrix2d
         public Point Transform(Matrix mat)
         {
             return new Point(mat.Elements[0] * X + mat.Elements[1] * Y + mat.Elements[2],
-                             mat.Elements[1] * X + mat.Elements[1] * Y + mat.Elements[3]);
+                             mat.Elements[3] * X + mat.Elements[4] * Y + mat.Elements[5]);
         }
 
         public Point TransformVector(Matrix mat)
         {
             return new Point(mat.Elements[0] * X + mat.Elements[1] * Y,
-                             mat.Elements[1] * X + mat.Elements[1] * Y);
+                             mat.Elements[3] * X + mat.Elements[4] * Y);
         }
 
         /// <summary>

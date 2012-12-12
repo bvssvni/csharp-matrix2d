@@ -108,6 +108,31 @@ namespace Matrix2d
             var crossLeft = Point.CrossLeft(a, b);
             Assert.True(crossLeft == -4);
         }
+
+        [Test()]
+        public void TestTransform1()
+        {
+            Point[] points = new Point[]{new Point(0, 0), new Point(1, 1)};
+            var mat = Matrix.Translation(2, 2);
+            Point.TransformPoints(points, points, mat);
+            Assert.True(points[0].X == 2);
+            Assert.True(points[0].Y == 2);
+            Assert.True(points[1].X == 3);
+            Assert.True(points[1].Y == 3);
+        }
+
+        [Test()]
+        public void TestTransformVector1()
+        {
+            var a = new Point(1, 1);
+            var mat = Matrix.Translation(1, 1) * Matrix.Scale(2);
+            var b = a.TransformVector(mat);
+            Assert.True(b.X == 2);
+            Assert.True(b.Y == 2);
+            var c = a.Transform(mat);
+            Assert.True(c.X == 3);
+            Assert.True(c.Y == 3);
+        }
     }
 }
 
