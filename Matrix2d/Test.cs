@@ -95,6 +95,19 @@ namespace Matrix2d
             Assert.True(mat.Elements[4] == 5);
             Assert.True(mat.Elements[5] == 0);
         }
+
+        [Test()]
+        public void TestDot1()
+        {
+            var a = new Point(4, 5);
+            var b = new Point(0, 1);
+            var dot = a * b;
+            Assert.True(dot == 5);
+            var crossRight = Point.CrossRight(a, b);
+            Assert.True(crossRight == 4);
+            var crossLeft = Point.CrossLeft(a, b);
+            Assert.True(crossLeft == -4);
+        }
     }
 }
 

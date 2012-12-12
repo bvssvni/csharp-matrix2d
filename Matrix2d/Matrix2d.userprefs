@@ -1,16 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="version.md">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Test.cs">
     <Files>
-      <File FileName="Point.cs" Line="45" Column="6" />
+      <File FileName="Point.cs" Line="54" Column="9" />
       <File FileName="Matrix.cs" Line="113" Column="6" />
-      <File FileName="version.md" Line="2" Column="1" />
+      <File FileName="Test.cs" Line="10" Column="27" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Matrix2d" expanded="True">
-            <Node name="version.md" selected="True" />
+            <Node name="References" expanded="True" />
+            <Node name="Test.cs" selected="True" />
           </Node>
         </State>
       </Pad>
@@ -26,7 +27,13 @@
         <State selected="True" />
       </Pad>
       <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True" selected="True" />
+        <State expanded="True" selected="True">
+          <Node name="Matrix2d" expanded="True">
+            <Node name="Matrix2d" expanded="True">
+              <Node name="TestPolygon" expanded="True" />
+            </Node>
+          </Node>
+        </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
