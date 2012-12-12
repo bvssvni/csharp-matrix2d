@@ -2,15 +2,14 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Test.cs">
     <Files>
-      <File FileName="Point.cs" Line="54" Column="9" />
-      <File FileName="Matrix.cs" Line="113" Column="6" />
-      <File FileName="Test.cs" Line="10" Column="27" />
+      <File FileName="Point.cs" Line="114" Column="10" />
+      <File FileName="Matrix.cs" Line="5" Column="18" />
+      <File FileName="Test.cs" Line="162" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Matrix2d" expanded="True">
-            <Node name="References" expanded="True" />
             <Node name="Test.cs" selected="True" />
           </Node>
         </State>

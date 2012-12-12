@@ -131,6 +131,16 @@ namespace Matrix2d
             return Point.Dot(a, b);
         }
 
+        public static Point Multiply(Point a, double t)
+        {
+            return new Point(a.X * t, a.Y * t);
+        }
+
+        public static Point operator * (Point a, double t)
+        {
+            return Point.Multiply(a, t);
+        }
+
         public Point Transform(Matrix mat)
         {
             return new Point(mat.Elements[0] * X + mat.Elements[1] * Y + mat.Elements[2],

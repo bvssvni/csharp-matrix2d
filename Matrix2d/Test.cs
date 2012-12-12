@@ -160,6 +160,15 @@ namespace Matrix2d
             var angle = Point.AngleBetween(b, a);
             Assert.True(angle == 90);
         }
+
+        [Test()]
+        public void TestMultiplyScalar1()
+        {
+            var a = new Point(1, 1);
+            a *= 3;
+            Assert.True(a.X == 3);
+            Assert.True(a.Y == 3);
+        }
     }
 }
 
