@@ -228,7 +228,10 @@ namespace Matrix2d
         /// </returns>
         public bool IsTranslating()
         {
-            return Elements[0] == 1 && Elements[1] == 0 && Elements[3] == 0 && Elements[4] == 1;
+            return Elements[0] == 1 
+				&& Elements[1] == 0 
+				&& Elements[3] == 0 
+				&& Elements[4] == 1;
         }
     }
 }
