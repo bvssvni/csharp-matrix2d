@@ -169,6 +169,63 @@ namespace Matrix2d
             Assert.True(a.X == 3);
             Assert.True(a.Y == 3);
         }
+
+		[Test()]
+		public void TestMatrixRotation()
+		{
+			var mat = Matrix.Rotation(90);
+
+            double eps = 0.0000001;
+			Assert.True(Math.Abs(mat.Elements[0] - 0) < eps);
+            Assert.True(Math.Abs(mat.Elements[1] - -1) < eps);
+            Assert.True(Math.Abs(mat.Elements[2] - 0) < eps);
+            Assert.True(Math.Abs(mat.Elements[3] - 1) < eps);
+            Assert.True(Math.Abs(mat.Elements[4] - 0) < eps);
+            Assert.True(Math.Abs(mat.Elements[5] - 0) < eps);
+
+            var p = new Point(0, 0).Transform(mat);
+            Assert.True(Math.Abs(p.X - 0) < eps);
+            Assert.True(Math.Abs(p.Y - 0) < eps);
+
+            var q = new Point(100, 10).Transform(mat);
+            Console.WriteLine(q.X.ToString());
+            Assert.True(Math.Abs(q.X - -10) < eps);
+            Assert.True(Math.Abs(q.Y - 100) < eps);
+		}
+
+		[Test()]
+		public void TestRectangleTransformedMaximum()
+		{
+			var rect = new Rectangle(0, 0, 100, 10);
+			var mat = Matrix.Rotation(90);
+			var transformedRect = rect.TransformedMaximum(mat);
+
+            double eps = 0.00000001;
+            Assert.True(Math.Abs(transformedRect.Left - -10) < eps);
+            Assert.True(Math.Abs(transformedRect.Top - 0) < eps);
+            Assert.True(Math.Abs(transformedRect.Right - 0) < eps);
+            Assert.True(Math.Abs(transformedRect.Bottom - 100) < eps);
+		}
+		
+        [Test()]
+        public void TestRectangleArea()
+        {
+            var rect = new Rectangle(0, 0, 100, 10);
+            var area = rect.Area();
+
+            Assert.True(area == 1000);
+        }
+
+        [Test()]
+        public void TestRectangleCeiled()
+        {
+            var rect = new Rectangle(0.5, 0.5, 1.5, 2.5).Ceiled();
+
+            Assert.True(rect.Left == 0);
+            Assert.True(rect.Top == 0);
+            Assert.True(rect.Right == 2);
+            Assert.True(rect.Bottom == 3);
+        }
     }
 }
 
