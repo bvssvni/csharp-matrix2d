@@ -1,15 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Rectangle.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Matrix.cs">
     <Files>
       <File FileName="Rectangle.cs" Line="88" Column="65" />
       <File FileName="Test.cs" Line="254" Column="50" />
+      <File FileName="Matrix.cs" Line="244" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Matrix2d" expanded="True">
-            <Node name="Rectangle.cs" selected="True" />
+            <Node name="Matrix.cs" selected="True" />
           </Node>
         </State>
       </Pad>

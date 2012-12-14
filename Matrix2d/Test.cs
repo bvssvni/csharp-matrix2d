@@ -253,6 +253,21 @@ namespace Matrix2d
             Assert.True(rect2.Intersects(rect3));
             Assert.True(rect3.Intersects(rect2));
         }
+
+        [Test()]
+        public void TestRectangleClip()
+        {
+            var rect = new Rectangle(0, 0, 100, 100);
+            var view = new Rectangle(10, 10, 80, 80);
+            var clipped = rect.Clip(view);
+
+            Assert.True(clipped == view);
+
+            view = new Rectangle(0, 0, 200, 200);
+            clipped = rect.Clip(view);
+
+            Assert.True(clipped == rect);
+        }
     }
 }
 

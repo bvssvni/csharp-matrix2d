@@ -5,7 +5,7 @@ namespace Matrix2d
 	/// <summary>
 	/// A rectangle with left and right boundaries, top and bottom.
 	/// </summary>
-	public class Rectangle
+	public class Rectangle : IComparable
 	{
 		public double Left;
 		public double Top;
@@ -96,6 +96,66 @@ namespace Matrix2d
                 && Top < rect.Bottom
                 && Right > rect.Left
                 && Bottom > rect.Top;
+        }
+
+        /// <summary>
+        /// Clips a rectangle to view.
+        /// </summary>
+        /// <param name='rect'>
+        /// Rect.
+        /// </param>
+        public Rectangle Clip(Rectangle view)
+        {
+            return new Rectangle(
+                Left < view.Left ? view.Left : Left,
+                Top < view.Top ? view.Top : Top,
+                Right > view.Right ? view.Right : Right,
+                Bottom > view.Bottom ? view.Bottom : Bottom
+                );
+        }
+
+        public int CompareTo(object obj)
+        {
+            Rectangle b = (Rectangle)obj;
+            if (Left < b.Left) return -1;
+            if (Left > b.Left) return 1;
+            if (Top < b.Top) return -1;
+            if (Top > b.Top) return 1;
+            if (Right < b.Right) return -1;
+            if (Right > b.Right) return 1;
+            if (Bottom < b.Bottom) return -1;
+            if (Bottom > b.Bottom) return 1;
+            return 0;
+        }
+
+        public static bool operator == (Rectangle a, Rectangle b)
+        {
+            return a.CompareTo(b) == 0;
+        }
+
+        public static bool operator != (Rectangle a, Rectangle b)
+        {
+            return a.CompareTo(b) != 0;
+        }
+
+        public static bool operator < (Rectangle a, Rectangle b)
+        {
+            return a.CompareTo(b) < 0;
+        }
+
+        public static bool operator <= (Rectangle a, Rectangle b)
+        {
+            return a.CompareTo(b) <= 0;
+        }
+
+        public static bool operator > (Rectangle a, Rectangle b)
+        {
+            return a.CompareTo(b) > 0;
+        }
+
+        public static bool operator >= (Rectangle a, Rectangle b)
+        {
+            return a.CompareTo(b) >= 0;
         }
 	}
 }
