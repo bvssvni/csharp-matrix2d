@@ -226,6 +226,33 @@ namespace Matrix2d
             Assert.True(rect.Right == 2);
             Assert.True(rect.Bottom == 3);
         }
+
+        [Test()]
+        public void TestRectangleContains()
+        {
+            var rect = new Rectangle(0, 0, 100, 100);
+            var inner = new Rectangle(10, 10, 50, 50);
+
+            Assert.True(rect.Contains(inner));
+        }
+
+        [Test()]
+        public void TestRectangleIntersects()
+        {
+            var rect = new Rectangle(0, 0, 100, 100);
+            var rect2 = new Rectangle(10, 0, 110, 100);
+
+            Assert.True(rect.Intersects(rect2));
+            Assert.True(rect2.Intersects(rect));
+
+            var rect3 = new Rectangle(100, 0, 200, 200);
+
+            Assert.False(rect.Intersects(rect3));
+            Assert.False(rect3.Intersects(rect));
+
+            Assert.True(rect2.Intersects(rect3));
+            Assert.True(rect3.Intersects(rect2));
+        }
     }
 }
 

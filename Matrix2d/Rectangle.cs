@@ -68,6 +68,35 @@ namespace Matrix2d
         {
             return new Rectangle(Math.Floor(Left), Math.Floor(Top), Math.Ceiling(Right), Math.Ceiling(Bottom));
         }
+
+        /// <summary>
+        /// Finds out whether a rectangle contains another.
+        /// </summary>
+        /// <param name='rect'>
+        /// The rectangle to check whether it is inside.
+        /// </param>
+        public bool Contains(Rectangle rect)
+        {
+            return Left <= rect.Left
+                && Top <= rect.Right
+                && Right >= rect.Right
+                && Bottom >= rect.Bottom;
+        }
+
+        /// <summary>
+        /// Finds out whether there is any intersection between two rectangles.
+        /// If only the edges overlap, there is no intersection.
+        /// </summary>
+        /// <param name='rect'>
+        /// The rectangle to check for intersection.
+        /// </param>
+        public bool Intersects(Rectangle rect)
+        {
+            return Left < rect.Right
+                && Top < rect.Bottom
+                && Right > rect.Left
+                && Bottom > rect.Top;
+        }
 	}
 }
 
