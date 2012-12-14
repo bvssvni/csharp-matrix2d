@@ -234,6 +234,21 @@ namespace Matrix2d
 				&& Elements[4] == 1;
         }
 
+        /// <summary>
+        /// Writes the elements of matrix into a float array.
+        /// </summary>
+        /// <param name='destination'>
+        /// The array to write to.
+        /// </param>
+        public void ToFloatArray(float[] destination)
+        {
+            destination[0] = (float)Elements[0];
+            destination[1] = (float)Elements[1];
+            destination[2] = (float)Elements[2];
+            destination[3] = (float)Elements[3];
+            destination[4] = (float)Elements[4];
+            destination[5] = (float)Elements[5];
+        }
     }
 }
 
