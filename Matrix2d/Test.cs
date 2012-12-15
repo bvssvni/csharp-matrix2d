@@ -267,6 +267,33 @@ namespace Matrix2d
             clipped = rect.Clip(view);
 
             Assert.True(clipped == rect);
+
+            var a = new Rectangle(0, 0, 1024, 768);
+            var b = new Rectangle(200, 0, 1024 + 200, 768);
+            clipped = b.Clip(a);
+
+            Assert.True(clipped.Left == 200);
+            Assert.True(clipped.Top == 0);
+            Assert.True(clipped.Right == 1024);
+            Assert.True(clipped.Bottom == 768);
+        }
+
+        [Test()]
+        public void TestMatrixInverted2()
+        {
+            var a = new Rectangle(0, 0, 1024, 768);
+            var mat = Matrix.Translation(100, 0);
+            var b = a.TransformedMaximum(mat);
+
+            Assert.True(b.Left == 100);
+            Assert.True(b.Top == 0);
+            Assert.True(b.Right == 1024 + 100);
+            Assert.True(b.Bottom == 768);
+
+            mat = mat.Inverted();
+            var c = b.TransformedMaximum(mat);
+
+            Assert.True(c == a);
         }
     }
 }

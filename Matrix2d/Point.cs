@@ -169,9 +169,13 @@ namespace Matrix2d
         public static void TransformPoints(Point[] dest, Point[] src, Matrix mat)
         {
             int n = src.Length;
-            for (int i = 0; i < n; i++)
+            double x, y;
+            for (int i = n-1; i >= 0; i--)
             {
-                dest[i] = src[i].Transform(mat);
+                x = src[i].X;
+                y = src[i].Y;
+                dest[i].X = mat.Elements[0] * x + mat.Elements[1] * y + mat.Elements[2];
+                dest[i].Y = mat.Elements[3] * x + mat.Elements[4] * y + mat.Elements[5];
             }
         }
 
